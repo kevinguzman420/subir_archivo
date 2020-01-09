@@ -2,18 +2,19 @@
 
 {% block title %}Subir Archivo{% endblock title %}
 
+{% block mensajes %}
+    {% with mensajes = get_flashed_messages() %}
+        {% if mensajes %}
+                {% for mensaje in mensajes %}
+                        {{ mensaje|e }}
+                {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock mensajes %}
 
 {% block contenido_cuerpo %}
 <div class="subir-archivos-contenedor-general">
-    <!-- <div class="menu-categorias">
-        <aside>
-            <ul>
-                {% for categoria in categorias %}
-                    <li><a href="#">{{ categoria.nombre }}</a></li>
-                {% endfor %}
-            </ul>
-        </aside>
-    </div> -->
+
     <div class="contenido-cuerpo-subir-archivo">
         <div class="encabezado-subir-archivo">
             <h1>Bienvenido</h1>

@@ -49,6 +49,9 @@ class Categoria(db.Model):
 	def obtener_categorias(id_usuario):
 		return Categoria.query.filter_by(id_usuario=id_usuario).all()
 
+	@staticmethod
+	def verificar_categoria(categoria):
+		return Categoria.query.filter_by(nombre=categoria).first()
 
 class Imagen(db.Model):
 	id = db.Column(db.Integer, primary_key=True)

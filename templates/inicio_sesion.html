@@ -2,6 +2,16 @@
 
 {% block title %}Inicio de Sesión{% endblock title %}
 
+{% block mensajes %}
+    {% with mensajes = get_flashed_messages() %}
+        {% if mensajes %}
+                {% for mensaje in mensajes %}
+                        {{ mensaje|e }}
+                {% endfor %}
+        {% endif %}
+        
+    {% endwith %}
+{% endblock mensajes %}
 
 {% block contenido_cuerpo %}
     <div class="formulario-div">

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, g, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, g, send_from_directory, flash
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from flask_sqlalchemy import    SQLAlchemy # pip3 install flask-sqlalchemy
 from werkzeug.urls import url_parse
@@ -24,7 +24,6 @@ EXTENSIONES_PERMITIDAS = set(["png", "jpg", "gif", "jpeg"])
 def extensiones_permitidas(filename):
     return "." in filename and filename.rsplit(".", 1)[1] in EXTENSIONES_PERMITIDAS
 
-# CAPTURAR AL USUARIO:
 @app.before_request
 def before_request_for_user():
 	g.usuario = current_user
@@ -51,9 +50,10 @@ def inicio_sesion():
             if not next_page or url_parse(next_page).netloc != '':
                 categorias = Categoria.obtener_categorias(current_user.id) # no se usa...
                 next_page = url_for("crear_categoria")
-            print("Bienvenido ", usuario.nombre_usuario)
+            # print("Bienvenido ", usuario.nombre_usuario)
+            flash("Bienvenido " + usuario.nombre_usuario)
             return redirect(next_page)
-        print("Usuario inválido.") #flash
+        flash("Usuario inválido.")
         print("usuario: " + str(usuario))
     return render_template("inicio_sesion.html")
 
@@ -62,7 +62,7 @@ def registro():
     if request.method == "POST":
         usuario = Usuario.get_by_email(request.form.get("correo"))
         if usuario is not None:
-            print("Ya existe una cuenta asociada a este correo.")
+            flash("Ya existe una cuenta asociada a este correo.")
         else:
             nombre = request.form.get("nom-usuario")
             correo = request.form.get("correo")
@@ -75,11 +75,10 @@ def registro():
                 next_page = request.args.get('next', None)
                 if not next_page or url_parse(next_page).netloc != '':
                     next_page = url_for('inicio_sesion')
-                    print("el usuario ha sido creado con exito.")
+                    flash("el usuario ha sido creado con exito.")
                 return redirect(next_page)
             except:
-                # flash("Ha habído un error al momento de crear la cuenta, intentelo más tarde! ")
-                print("Error haha")
+                flash("Error en el servidor, intentelo más tarde.")
     if current_user.is_authenticated:
         return render_template("registro.html", categorias=Categoria.obtener_categorias(current_user.id))
     else:
@@ -95,19 +94,30 @@ def crear_categoria():
             # Crear la carpeta de la categoria:
             if not os.path.exists("./static/images/" + nombre_categoria):
                 try:
+                    categoria = Categoria.verificar_categoria(nombre_categoria)
+                    if categoria is not None:
+                        flash("Ya tienes una categoria con el mismo nombre.")
+                    else:
+                        categoria = Categoria(nombre=nombre_categoria.upper(), id_usuario=current_user.id)
+                        categoria.save()
+                        os.mkdir("./static/images/" + nombre_categoria)
+                        categorias = Categoria.obtener_categorias(current_user.id)
+                        flash("Categoria creada con exito.")
+                        # return redirec(url_for("subir_archivo"))
+                        return render_template("crear_categoria.html", categorias=Categoria.obtener_categorias(current_user.id))
+
+                except:
+                    flash("Ha habido un error 500 en el servidor, vuelva e intentarlo más tarde.")
+            else:
+                categoria = Categoria.verificar_categoria(nombre_categoria)
+                if categoria is not None:
+                    flash("Ya tienes una categoria con el mismo nombre.")
+                else:
                     categoria = Categoria(nombre=nombre_categoria.upper(), id_usuario=current_user.id)
                     categoria.save()
-                    os.mkdir("./static/images/" + nombre_categoria)
-                    categorias = Categoria.obtener_categorias(current_user.id)
-                    return render_template("subir_archivo.html") #, categorias=categorias)
-                    print("Carpeta creada con exito.")
-                except:
-                    return "Ha habido un error 500 en el servidor, vuelva e intentarlo más tarde."
-            else:
-                categoria = Categoria(nombre=nombre_categoria.upper(), id_usuario=current_user.id)
-                categoria.save()
+                    flash("Categoria creada con exito.")
         else:
-            print("Ingrese nombre de la categoria.")
+            flash("Ingrese nombre de la categoria.")
     return render_template("crear_categoria.html", categorias=Categoria.obtener_categorias(current_user.id))
 
 @app.route('/subir-archivos/', methods=['GET', 'POST'])
@@ -121,10 +131,10 @@ def subir_archivo():
         UPLOAD_FOLDER = os.path.abspath("./static/images/" + nombre_categoria)
         app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
         if "cargar_archivo" not in request.files:
-            return "El formulario no tiene la parte que corresponde al archivo."
+            flash("El formulario no tiene la parte que corresponde al archivo.")
         f = request.files["cargar_archivo"]
         if f.filename == "":
-            return "No ha seleccionado un archivo."
+            flash("No ha seleccionado un archivo.")
         """
         LAS IMAGENES YA ESTAN GUARDADAS EN LA CARPETA DE SU CATEGORIA CORRESPONDIENTE,
         HACE FALTA GUARDARLAS EN LA CATEGORIA CORRESPONDIENTE EN LA BASE DE DATOS.
@@ -137,17 +147,17 @@ def subir_archivo():
                 filename = secure_filename(filename)
 
             f.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-            print("archivo guardado correctamente en la categoria: " + nombre_categoria)
+            flash("archivo guardado correctamente en la categoria: " + nombre_categoria)
             
             fecha = datetime.now()
             fecha = fecha.strftime("%Y-%m-%d")
             imagen = Imagen(nombre=filename, descripcion=request.form.get("descripcion_imagen"), \
                      fecha=fecha, id_categoria=categoria.id)
             imagen.save()
-            print("archivo guardado correctamente")
+            flash("archivo guardado correctamente")
             return render_template("subir_archivo.html", categorias=Categoria.obtener_categorias(current_user.id))
         else:
-            return "El archivo tiene una extensión no permitida."
+            flash("El archivo tiene una extensión no permitida.")
     return render_template("subir_archivo.html", categorias=Categoria.obtener_categorias(current_user.id))
 
 # @app.route('/mis-archivos/')
@@ -228,4 +238,3 @@ def salir():
 	print("Vuelve pronto, " + usuario)
 	return redirect(url_for('index'))
 # ---
-
