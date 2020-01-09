@@ -229,5 +229,3 @@ def salir():
 	return redirect(url_for('index'))
 # ---
 
-if "__main__" == __name__:
-    app.run(debug=True, port=8000) 
