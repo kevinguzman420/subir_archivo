@@ -1,0 +1,560 @@
+body {
+    margin: 0px;
+    /* background-color: red; */
+}
+
+
+/* PAGINA DE INICIO */
+/* ENCABEZADO */
+.header {
+    /* border: 1px solid red; */
+    background-color: black;
+    /* position: fixed;
+    width: 1354px; */
+}
+.header-titulo {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: center;
+}
+.header-titulo h1 {
+    margin: 10px 0px;
+    margin-bottom: 15px;
+    color: rgb(209, 203, 196);
+    text-transform: uppercase;
+    font-size: 20px;
+}
+.header-menu {
+    /* border: 1px solid yellow; */
+    display: flex;
+    justify-content: space-between;
+}
+.header-menu a {
+    text-decoration: none;
+    color: rgb(219, 188, 188);
+}
+ul li {
+    list-style: none;
+}
+
+/* ----------------------falconmasters-------------- */
+/* #menu_derecho {
+    margin:auto;
+    width:600px;
+    font-family:Arial, Helvetica, sans-serif;
+} */
+.nav > li {
+    float:left;
+}
+/* .nav li a {
+    background-color:#000;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 12px;
+    display:block;
+} */
+.nav li a:hover {
+    background-color:#000;
+}
+.nav li ul {
+    display:none;
+    position:absolute;
+    min-width:140px;
+}
+.nav li:hover > ul {
+    display:block;
+    background: #000000;
+
+}
+.nav li ul li {
+    position:relative;
+}
+/* ----------- final de diseño del menu desplegable ---------- */
+.menu-izquierdo ul, .menu-derecho ul {
+    display: flex;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+.link.nombre-usuario {
+    margin: 0px;
+    text-indent: 14px;
+    width: 70px;
+}
+.link {
+    margin: 0px 10px;
+}
+#link_mis_archivos {
+    color: #dbbcaa;
+}
+#link_mis_archivos:hover {
+    cursor: pointer;
+}
+
+/* CUERPO */
+.cuerpo-encabezado {
+    /* border: 1px solid red; */
+    padding-top: 34px;
+
+}
+.cuerpo-titulo h1 {
+    margin-bottom: 0px;
+    text-indent: 8%;
+}
+.cuerpo-texto p {
+    margin-top: 5px;
+    padding-left: 2px;
+    text-indent: 105px;
+}
+.cuerpo-tarjetas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0 auto; */
+}
+.cuerpo-tarjeta-ayuda, .cuerpo-tarjeta-bienvenido, .cuerpo-tarjeta-cuenta {
+    border: 1px solid rgb(214, 203, 203);
+    width: 350px;
+    height: 175px;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+.cuerpo-tarjetas h4 {
+    font-size: 25px;
+    /* font-weight: 100px; */
+    text-transform: capitalize;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+.cuerpo-tarjetas p {
+    margin: 10px 0px 25px 0px;
+}
+.cuerpo-tarjeta-ayuda {
+    /* margin-left: 5px; */
+    margin-right: 25px;
+}
+.cuerpo-tarjeta-ayuda {
+    margin: 0 25px;
+}
+.cuerpo-tarjeta-cuenta {
+    margin-right: 5px;
+    margin-left: 25px;
+}
+.cuerpo-tarjetas a {
+    text-decoration: none;
+    /* border: 1px solid blue; */
+    padding: 8px 20px;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: white;
+}
+.footer {
+    /* border: 1px solid red; */
+    margin-top: 200px;
+    background-color: black;
+    color: #d1cbc4;
+}
+.footer-ancho {
+    height: 75px;
+}
+.footer-ancho p {
+    text-indent: 108px;
+    padding-top: 25px;
+    
+}
+.footer a {
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #007bff;
+}
+/* FINAL DE LA PAGINA DE INICIO */
+
+
+
+/* INICIO DE LA PAGINA DE REGISTRO E INICIO DE SESION */
+.formulario-div {
+    /* border: 1px solid red; */
+    /* width: 500px; */
+    display: flex;
+    justify-content: center;
+}
+.formulario {
+    width: 518px;
+    /* border: 1px solid blue; */
+    /* padding: 0px 30px; */
+}
+.formulario h1 {
+    margin-bottom: 10px;
+}
+.formulario label {
+    margin-bottom: 10px;
+}
+.formulario .input {
+    width: 500px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+}
+.formulario .input:hover {
+    border: 1px solid green;
+    width: 515px;
+    height: 30px;
+    text-indent: 7px;
+}
+.formulario .input:focus {
+    border: 2px solid #007bff;
+    width: 515px;
+    height: 30px;
+    text-indent: 7px;
+}
+.formulario .button {
+    width: 125px;
+    height: 35px;
+    background-color: #007bff;
+    color: white;
+    font-weight: 600px;
+    border: none;
+    border-radius: 3px;
+}
+.button:hover {
+    width: 125px;
+    height: 35px;
+    background-color: black;
+    color: #007bff;
+    font-weight: 600px;
+    border: none;
+    border-radius: 3px;
+}
+.formulario div {
+    margin: 8px 0px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+.formulario div a {
+    color: #007bff;
+    text-decoration: none;
+}
+.formulario a:hover {
+    text-decoration: underline;
+}
+/* FINAL DE LA PAGINA DE REGISTRO E INICIO DE SESION*/
+
+/* INICIO DE LA PAGINA DE SUBIDA DE ARCHIVOS */
+.subir-archivos-contenedor-general {
+    display: flex;
+    margin-top: 15px;
+}
+.contenido-cuerpo-subir-archivo {
+    /* border: 1px solid red; */
+    width: 508px;
+    height: 265px;
+    margin: 0 auto;
+    display: flex;
+}
+.encabezado-subir-archivo h1 {
+    margin-bottom: 0px;
+    color: rgb(48, 46, 46);
+}
+.encabezado-subir-archivo p {
+    margin-top: 10px;
+}
+.formulario-subir-archivo {
+    margin: 0px auto;
+    display: grid;
+}
+.formulario-subir-archivo p {
+    margin-bottom: 7px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px;
+}
+/* personalizarl el select */
+.formulario-subir-archivo select {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    -webkit-appearance: none;
+    padding: 0px 50px 0px 20px;
+    cursor: pointer;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* font: 300 18px/1.5 'Roboto', sans-serif; */
+    text-indent: -3px;
+}
+/* para que no se vea la flechita en ie */
+.formulario-subir-archivo select::-ms-expand {
+    display: none;
+}
+/* -------------------------------------- */
+.formulario-subir-archivo select:focus {
+    outline: none;
+}
+.formulario-subir-archivo option {
+    font: 300 18px/1.5 'Roboto', sans-serif;
+    font-size: 13px;
+}
+.formulario-subir-archivo .select {
+    position: relative;
+    background: #fff;
+    border: 1px solid #007bff;
+    height: 34px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.formulario-subir-archivo .select:before {
+    content: '';
+    background: #007bff;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 40px;
+    pointer-events: none;
+}
+.formulario-subir-archivo .select:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 7px 0px;
+    border-color: #007bff transparent transparent transparent;
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    transform: translate(-50%);
+}
+/* ------------------------------------------------- */
+
+.formulario-subir-archivo .cargar-archivo {
+    margin-top: 20px;
+}
+
+.formulario-subir-archivo label {
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px;
+}
+.formulario-subir-archivo .renombrar_archivo {
+    width: 490px;
+    height: 30px;
+    margin-bottom: 7px;
+}
+.formulario-subir-archivo .renombrar_archivo:hover {
+    width: 504px;
+    height: 30px;
+    border: 1px solid green;
+    text-indent: 7px;
+}
+.formulario-subir-archivo .renombrar_archivo:focus {
+    width: 502px;
+    height: 28px;
+    border: 2px solid #007bff;
+    text-indent: 7px;
+}
+
+.formulario-subir-archivo .button {
+    width: 125px;
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+.formulario-subir-archivo .button:hover {
+    width: 125px;
+    height: 30px;
+    background-color: black;
+    color: #007bff;
+    border: none;
+    border-radius: 3px;
+}
+.texto-subir-archivo {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/* FINAL DE LA PAGINA DE SUBIDA DE ARCHIVOS */
+
+
+
+/* INICIO DE LA PAGINA DE CREAR CATEGORIA */
+.contenido-general-crear-categoria {
+    display: flex;
+}
+.crear-categoria-menu-lateral {
+    border: 1px solid #777777;
+    border-radius: 3px;
+    margin-top: 30px;
+    width: 225px;
+    height: 261px;
+    overflow-y: auto;
+    overflow-x: none;
+}
+.crear-categoria-menu-lateral h3 {
+    color: #302e2e;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.crear-categoria-menu-lateral ul {
+    margin-top: 8px;
+}
+.crear-categoria-menu-lateral ul li {
+    list-style: disc;
+    color: #0a3564;
+}
+.crear-categoria-menu-lateral a {
+    text-decoration: none;
+    color: #007bff;
+}
+.contenido-cuerpo-crear-categoria {
+    /* border: 1px solid red; */
+    margin: 0px auto;
+    width: 550px;
+    height: 261px;
+    /* padding: 0px 20px; */
+    /* display: flex; */
+}
+.encabezado-crear-categoria h1 {
+    margin-bottom: 0px;
+    color: rgb(48, 46, 46);
+    font-size: 35px;
+    text-indent: -2px;
+    /* text-transform: uppercase; */
+}
+.encabezado-crear-categoria p {
+    margin-top: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+}
+.contenedor-crear-categoria {
+    margin: 20px auto;
+}
+.formulario-crear-categoria label {
+    font-size: 17px;
+    font: small-caps 100%/200% serif;
+}
+.formulario-crear-categoria input {
+    width: 500px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+.formulario-crear-categoria input:hover {
+    border: 1px solid green;
+    width: 515px;
+    height: 30px;
+    text-indent: 7px;
+}
+.formulario-crear-categoria input:focus {
+    border: 2px solid #007bff;
+    width: 515px;
+    height: 30px;
+    text-indent: 7px;
+}
+.formulario-crear-categoria .button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 34px;
+    border-radius: 3px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.formulario-crear-categoria .button:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    width: 150px;
+    height: 34px;
+    border-radius: 3px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.texto-crear-categoria p {
+    margin-top: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/* FINAL DE LA PAGINA DE CREAR CATEGORIA */
+
+/* INICIO DE LA PAGINA DE MIS_ARCHIVOS */
+.mis-archivos-encabezado {
+    position: fixed;
+    /* padding-bottom: 100px; */
+}
+.mis-archivos-cuerpo {
+    display: flex;
+    padding-top: 90px;
+    flex-wrap: wrap;
+}
+.mis-archivos-menu-lateral {
+    border: 1px solid rgb(105, 105, 107);
+    border-radius: 3px;
+    width: 220px;
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: none;
+    position: fixed;
+}
+.mis-archivos-menu-lateral h3 {
+    margin-top: 7px;
+    margin-bottom: 8px;
+    color: #3b3838;
+}
+.mis-archivos-menu-lateral ul {
+    margin-top: 8px;
+}
+.mis-archivos-menu-lateral ul li {
+    list-style: disc;
+    color: #0a3564;
+}
+.mis-archivos-menu-lateral a {
+    text-decoration: none;
+    color: #1f62aa;
+}
+.mis-archivos-imagenes {
+    /* border: 1px solid red; */
+    /* width: 1200px; */
+    /* height: 500px; */
+    display: flex;
+    margin-left: 230px;
+    overflow-y: auto;
+    flex-wrap: wrap;
+}
+.mis-archivos-imagenes img {
+    object-fit: cover;
+    background-position: center;
+    /* flex-shrink: 0; */
+    width: 350px;
+    height: 175px; 
+}
+.mis-archivos-imagenes figure {
+    margin: 0;
+}
+.mis-archivos-tarjeta-imagen {
+    border: 1px solid rgb(99, 96, 96);
+    border-radius: 5px;
+    margin: 2px;
+    overflow: hidden; /* cuando la esquina de la imagen sale del border. */
+    padding: 5px;
+    margin-top: 0px;
+    width: 350px;
+}
+.mis-archivos-descripcion-imagen p {
+    width: 350px;
+    word-wrap: break-word;
+}
+.mis-archivos-descripcion-imagen a{
+    /* border: 1px solid red; */
+    border-radius: 3px;
+    display: inline-block;
+    width: 350px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: white;
+    background-color: #ff0000;
+}
+.mis-archivos-descripcion-imagen a:hover {
+    /* border: 1px solid #777777; */
+    background-color: #000000;
+}
+/* FINAL DE LA PAGINA DE MIS_ARCHIVOS */

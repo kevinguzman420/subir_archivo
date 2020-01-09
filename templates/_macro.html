@@ -1,0 +1,36 @@
+{% macro mostrar_datos_usuario() -%}
+    {% if g.usuario.is_authenticated %}
+        <ul>
+            <li class="link"><a href="{{ url_for('index') }}">Inicio</a></li>
+            <li class="link nombre-usuario"><a href="#">{{ g.usuario.nombre_usuario }}</a>li>
+            <li class="link"><a href="{{ url_for('salir') }}">Cerrar Sesión</a></li>
+        </ul>
+    {% else %}
+        <ul>
+            <li class="link"><a href="{{ url_for('index') }}">Inicio</a></li>
+            <li class="link"><a href="{{ url_for('inicio_sesion') }}">Ingresar</a></li>
+            <li class="link"><a href="{{ url_for('registro') }}">Registrarse</a></li>
+        </ul>
+    {% endif %}
+    
+{%- endmacro %}
+{% macro mostrar_menu_usuario() -%}
+    {% if g.usuario.is_authenticated %}
+        <ul class="nav">
+            <li class="link"><a href="{{ url_for('crear_categoria') }}">Crear Categoria</a></li>
+            {% if categorias %}
+                <li class="link"><a href="{{ url_for('subir_archivo') }}">Subir Archivos</a></li>
+            {% endif %}
+            <li class="link" id="link_mis_archivos">Mis Archivos
+                <ul>
+                    {% for categoria in categorias %}
+                            <li><a href="{{ url_for('mis_archivos', categoria=categoria.nombre) }}">{{ categoria.nombre|e }}</a></li>
+                    {% endfor %}
+                    
+                </ul>
+            </li>
+            <li class="link"><a href="#">Cuenta</a></li>
+        </ul>
+    {% endif %}
+
+{%- endmacro %}

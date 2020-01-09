@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+{% block title %}Mis Archivos{% endblock title %}
+
+{% block contenido_cuerpo %}
+    <div class="contenedor-general-mis-archivos">
+        <div class="mis-archivos-encabezado">
+            <h1>Imagenes</h1>
+        </div>
+        <div class="mis-archivos-cuerpo">
+            <div class="mis-archivos-menu-lateral">
+                <header>
+                    <h3>Mis archivos:</h3>
+                </header>
+                <ul>
+                    {% for categoria in categorias %}
+                    <li><a href="{{ url_for('mis_archivos', categoria=categoria.nombre) }}">{{ categoria.nombre|e }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="mis-archivos-imagenes">
+                {% for imagen in imagenes %}
+                    <article class="mis-archivos-tarjeta-imagen">
+                        <figure>
+                            <a href="{{ url_for('ver_imagen', categoria=categoria, nombre_archivo=imagen.nombre) }}"><img src="{{ url_for('static', filename='./images/' + categoria + '/' + imagen.nombre) }}" alt="{{ imagen.nombre }}"></a>
+                        </figure>
+                        <div class="mis-archivos-descripcion-imagen">
+                            <p><strong>Descripción: </strong>{{ imagen.descripcion }}</p>
+                            <p><small><strong>Fecha de creación: </strong>{{ imagen.fecha }}</small></p>
+                            <a href="{{ url_for('borrar_imagen', categoria=categoria, imagen_nombre=imagen.nombre) }}">Borrar imagen</a>
+                        </div>
+                    </article>
+                {% endfor %}
+                        
+            </div>
+        </div>
+    </div>
+{% endblock contenido_cuerpo %}
+
+
+{% block footer %}
+
+{% endblock footer %}
+

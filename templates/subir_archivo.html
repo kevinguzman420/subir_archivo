@@ -1,0 +1,48 @@
+{% extends "base/base.html" %}
+
+{% block title %}Subir Archivo{% endblock title %}
+
+
+{% block contenido_cuerpo %}
+<div class="subir-archivos-contenedor-general">
+    <!-- <div class="menu-categorias">
+        <aside>
+            <ul>
+                {% for categoria in categorias %}
+                    <li><a href="#">{{ categoria.nombre }}</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </div> -->
+    <div class="contenido-cuerpo-subir-archivo">
+        <div class="encabezado-subir-archivo">
+            <h1>Bienvenido</h1>
+            <p>Selecciona el archivo que deseas subir</p>
+            <div class="container-subir-archivo">
+                <form class="formulario-subir-archivo" action="" method="POST" enctype="multipart/form-data">
+                    <p>Selecciona la categoria donde agregaras los archivos:</p>
+                    <div class="select">
+                        <select name="opciones">
+                            {% for categoria in categorias %}
+                                <option value="{{ categoria.nombre|e }}">{{ categoria.nombre|e }}</option>    
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <input class="cargar-archivo" name="cargar_archivo" type="file" multiple> <br>
+                    <label for="">Renombrar archivo:</label><br>
+                    <input class="renombrar_archivo" type="text" name="renombrar_archivo" placeholder="Ingrese nuevo nombre del archivo; ej: nombre_archivo.ext"> <br>
+                    <textarea name="descripcion_imagen" class="textarea-subir-archivo" cols="30" rows="2" maxlength="144" placeholder="Ingresa descripcion de la imagen"></textarea>
+                    <input class="button" type="submit" value="Subir">
+                </form>
+            </div>
+            <div class="texto-subir-archivo">
+                <p>* Todos los archivos son publicos, ten cuidado con lo que subes.</p>
+            </div>
+        </div>
+                
+    </div>
+</div>
+{% endblock contenido_cuerpo %}
+            
+            
+            

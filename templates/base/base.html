@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-titulo">
+            <h1>subir archivos</h1>
+        </div>
+        <div class="header-menu">
+            <nav class="menu-izquierdo">
+                {% from "_macro.html" import mostrar_datos_usuario with context %}
+                    {{ mostrar_datos_usuario() }}
+            </nav>
+            
+            <nav class="menu-derecho" id="menu_derecho">
+                {% from "_macro.html" import mostrar_menu_usuario with context %}
+                    {{ mostrar_menu_usuario() }}
+            </nav>
+        </div>
+    </header>
+
+    {% block contenido_cuerpo %}
+    {% endblock contenido_cuerpo %}
+    
+    {% block footer %}
+        <footer class="footer">
+            <div class="footer-ancho">
+                <p>&copy; 2019 <a href="#">guzman-kevin.</a> All rights reserved.</p>
+            </div>
+        </footer>
+    {% endblock %}
+</body>
+</html>

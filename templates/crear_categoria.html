@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+
+{% block title %}Crear Categoria{% endblock title %}
+
+
+{% block contenido_cuerpo %}
+<div class="contenido-general-crear-categoria">
+
+    <div class="crear-categoria-menu-lateral">
+        <header>
+            <h3>Mis categorias:</h3>
+        </header>
+        <ul>
+            {% for categoria in categorias %}
+            <li><a href="{{ url_for('mis_archivos', categoria=categoria.nombre) }}">{{ categoria.nombre|e }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="contenido-cuerpo-crear-categoria">
+        <div class="crear-categoria-contenido-cuerpo">
+            <div class="encabezado-crear-categoria">
+                <h1>Crear Categoria</h1>
+                <p>Ingresa el nombre de la categoria a crear.</p>
+            </div>
+            <div class="contenedor-crear-categoria">
+                <form class="formulario-crear-categoria" action="" method="POST">
+                    <label for="">Nombre de la categoria:</label> <br>
+                    <input type="text" name="nombre_categoria" placeholder="Ingrese nombre de categoria en plural, ej: lugares, animales, viajes... etc."> <br>
+                    <input class="button" type="submit" value="Crear Categoria">
+                    <!-- <button>Crear Categoria</button> -->
+                </form>
+            </div>
+            <div class="texto-crear-categoria">
+                <p>* Todos los archivos son publicos, ten cuidado con lo que subes.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock contenido_cuerpo %}
+
+

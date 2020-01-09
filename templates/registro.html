@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Registro{% endblock title %}
+
+
+{% block contenido_cuerpo %}
+    <div class="formulario-div">
+        <form action="" class="formulario" method="POST"> <br>
+            <h1>Registrate</h1>
+            <label for="">Ingrese nombre:</label> <br>
+            <input class="input" required type="text" name="nom-usuario" placeholder="Nombre de usuario"> <br>
+            <label for="">Ingrese email:</label> <br>
+            <input class="input" required type="email" name="correo" placeholder="Correo"> <br>
+            <label for="">Ingrese password:</label> <br>
+            <input class="input" required type="password" name="contraseña" placeholder="Contraseña"> <br>
+            <input class="button" type="submit" name="registrar" value="Registrar"> <br>
+            <div>
+                <a href="{{ url_for('inicio_sesion')}}">¿Ya tienes cuenta? Ingresar</a>
+            </div>
+        </form>
+    </div>
+{% endblock contenido_cuerpo %}
+
+
